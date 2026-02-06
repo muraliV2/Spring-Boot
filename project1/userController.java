@@ -1,6 +1,6 @@
 package com.example.controller;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,23 +10,14 @@ import com.example.service.UserService;
 import com.example.userdto.Userdto;
 
 @RestController
-@RequestMapping("/User")
-public class UserController 
-{
-	
-	UserService userservice = new UserService();
-	@PostMapping("/Register")
-public String RegisterUser(@RequestBody Userdto dto)
-{
-		
-		UserService.RegisterUser(dto);
-return null;	
-}
-{
-	
-}
+@RequestMapping("/user")
+public class UserController {
 
-{
-	
-}
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/register")
+    public Userdto registerUser(@RequestBody Userdto dto) {
+        return userService.registerUser(dto);
+    }
 }
