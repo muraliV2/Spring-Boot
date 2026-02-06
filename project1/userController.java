@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,4 +21,10 @@ public class UserController {
     public Userdto registerUser(@RequestBody Userdto dto) {
         return userService.registerUser(dto);
     }
+    
+//    @GetMapping("/test")
+//    public String test() {
+//        return "Working";
+//    }
+
 }
