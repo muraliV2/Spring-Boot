@@ -20,7 +20,7 @@ public void setUserId(int userId) {
 }
 public String getUserName() {
 	return UserName;
-} 
+}
 public void setUserName(String userName) {
 	UserName = userName;
 }
