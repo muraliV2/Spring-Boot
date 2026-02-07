@@ -1,5 +1,7 @@
 package com.example.userdao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +17,10 @@ public class Userdao {
     public User registerUser(User user) {   // ✅ fixed name
         return userrepository.save(user);
     }
+
+	public List<User> userdetails() 
+	{
+	return userrepository.findAll();
+		
+	}
 }
