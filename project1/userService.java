@@ -47,6 +47,12 @@ public class UserService {
         }
     }
 
+	public Userdto getuserbyemail(String email) 
+	{
+		Optional<User> opt = dao.getuserbyemail(email);
+		return mapper.map(opt.get(), Userdto.class);
+	}
+
 	
 	
 	
