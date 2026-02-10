@@ -1,7 +1,11 @@
 package com.example.userdto;
 
-public class Userdto {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Userdto {
+@Id
     private int userId;
     private String userName;
     private String email;
@@ -33,7 +37,6 @@ public class Userdto {
         this.password = password;
     }
     public long getContact() {
-        
         return contact;
     }
     public void setContact(long contact) {
