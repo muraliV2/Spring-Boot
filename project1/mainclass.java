@@ -23,4 +23,3 @@ public class UserappApplication {
         return new ModelMapper();
     }
 }
-
