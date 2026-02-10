@@ -34,4 +34,9 @@ public class Userdao {
 		 Optional<User> opt  = userrepository.findById(userId);
 		 return opt;
 	}
+
+	public Optional<User> getuserbyemail(String email) {
+		Optional<User> opt = userrepository.findByEmail(email);
+		return opt;
+	}
 }
