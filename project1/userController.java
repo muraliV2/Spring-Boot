@@ -1,55 +1,54 @@
-package com.example.service;
+package com.example.controller;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.apache.catalina.mapper.Mapper;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.User;
-import com.example.repository.UserRepository;
-import com.example.userdao.Userdao;
+import com.example.service.UserService;
 import com.example.userdto.Userdto;
 
-@Service
-public class UserService {
-	
-	
-	
+@RestController
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
-    private Userdao dao;
+    private UserService userService;
 
-    @Autowired
-    private ModelMapper mapper;
-
-    public Userdto registerUser(Userdto dto) {
-
-        User user = mapper.map(dto, User.class);
-        User savedUser = dao.registerUser(user);
-        return mapper.map(savedUser, Userdto.class);
+    @PostMapping("/register")
+    public Userdto registerUser(@RequestBody Userdto dto) {
+        return userService.registerUser(dto);
     }
-
-	public List<User> userdetails() {
-	return 	dao.userdetails();
+    
+    @GetMapping("/getuser")
+    public List<User>  userdetails()
+    {
+    	return userService.userdetails();
 		
-	}
-
-	public Userdto getuserbyId(int userId) {
-        Optional<User> opt = dao.getuserbyId(userId);
-
-        if (opt.isPresent()) {
-            return mapper.map(opt.get(), Userdto.class);
-        } else {
-            throw new RuntimeException("User not found with id " + userId);
-        }
+    }
+    
+    @GetMapping("/getdetails/{userId}")
+    public Userdto getuserbyId(@PathVariable int userId) {
+        return userService.getuserbyId(userId);
     }
 
-	
-	
-	
-	
+    @GetMapping("/by-email")
+
+    public Userdto getuserbyemail(@RequestParam String email)
+    {
+    	return userService.getuserbyemail(email);
+    }
+
+    
+    
+    
+    
 
 }
