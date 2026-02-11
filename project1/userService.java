@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import com.example.entity.User;
 import com.example.repository.UserRepository;
 import com.example.userdao.Userdao;
 import com.example.userdto.Userdto;
+import com.example.util.ResponseStructure;
 
 @Service
 public class UserService {
@@ -37,20 +39,27 @@ public class UserService {
 		
 	}
 
-	public Userdto getuserbyId(int userId) {
-        Optional<User> opt = dao.getuserbyId(userId);
-
-        if (opt.isPresent()) {
-            return mapper.map(opt.get(), Userdto.class);
-        } else {
-            throw new RuntimeException("User not found with id " + userId);
-        }
+	public ResponseStructure<Userdto> getuserbyId(int userId) {
+        User user = Userdao.getuserbyId(userId);
+		ResponseStructure<Userdto> structure = new ResponseStructure<Userdto>();
+		Userdto userdto = mapper.map(user,Userdto.class);
+		structure.setData(userdto);
+		structure.setTimeStamp(LocalDateTime.now());
+		structure.setStatusCode(200);
+		structure.setMessage("user found Successfully");
+		return structure;
     }
 
-	public Userdto getuserbyemail(String email) 
+	public ResponseStructure<Userdto> getuserbyemail(String email) 
 	{
-		Optional<User> opt = dao.getuserbyemail(email);
-		return mapper.map(opt.get(), Userdto.class);
+		User user = dao.getuserbyemail(email);
+		ResponseStructure<Userdto> structure = new ResponseStructure<Userdto>();
+		Userdto userdto = mapper.map(user, Userdto.class);
+		structure.setData(userdto);
+		structure.setTimeStamp(LocalDateTime.now());
+		structure.setStatusCode(200);
+		structure.setMessage("user found Successfully");
+		return structure;
 	}
 
 	
