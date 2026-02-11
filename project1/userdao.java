@@ -28,16 +28,13 @@ public class Userdao {
 		
 	}
 	
-	public Optional<User> getuserbyId(int userId)
+	public User getuserbyId(int userId) 
 	{
 		
-		 Optional<User> opt  = userrepository.findById(userId);
-		 return opt;
+		return userrepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("No UserId Found"));
 	}
 
-	public Optional<User> getuserbyemail(String email) {
-		Optional<User> opt = userrepository.findByEmail(email);
-		return opt;
+	public User getuserbyemail(String email) {
+		return userrepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("Email doesnt Exist"));
 	}
 }
-
