@@ -3,6 +3,9 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +26,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public Userdto registerUser(@RequestBody Userdto dto) {
-        return userService.registerUser(dto);
+    public ResponseEntity<Userdto> registerUser(@RequestBody Userdto dto) {
+        Userdto userdto2 = userService.registerUser(dto);
+        return new ResponseEntity<>(userdto2,HttpStatus.CREATED);
+    	//return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(dto));  
+   
+
     }
     
     @GetMapping("/getuser")
@@ -35,15 +42,17 @@ public class UserController {
     }
     
     @GetMapping("/getdetails/{userId}")
-    public Userdto getuserbyId(@PathVariable int userId) {
-        return userService.getuserbyId(userId);
+    public ResponseEntity<Userdto> getuserbyId(@PathVariable int userId) {
+        Userdto user = userService.getuserbyId(userId);
+        return new  ResponseEntity<>(user,HttpStatus.OK);
     }
 
     @GetMapping("/by-email")
 
-    public Userdto getuserbyemail(@RequestParam String email)
+    public ResponseEntity<Userdto> getuserbyemail(@RequestParam String email)
     {
-    	return userService.getuserbyemail(email);
+    	Userdto user1 =  userService.getuserbyemail(email);
+    	return new ResponseEntity<>(user1,HttpStatus.OK);
     }
 
     
