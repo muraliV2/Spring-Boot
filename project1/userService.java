@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.apache.catalina.mapper.Mapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.User;
@@ -27,12 +28,12 @@ public class UserService {
     @Autowired
     private ModelMapper mapper;
 
-    public Userdto registerUser(Userdto dto) {
-
-        User user = mapper.map(dto, User.class);
-        User savedUser = dao.registerUser(user);
-        return mapper.map(savedUser, Userdto.class);
-    }
+//    public Userdto registerUser(Userdto dto) {
+//
+//        User user = mapper.map(dto, User.class);
+//        User savedUser = dao.registerUser(user);
+//        return mapper.map(savedUser, Userdto.class);
+//    }
 
 	public List<User> userdetails() {
 	return 	dao.userdetails();
@@ -40,7 +41,7 @@ public class UserService {
 	}
 
 	public ResponseStructure<Userdto> getuserbyId(int userId) {
-        User user = Userdao.getuserbyId(userId);
+        User user = dao.getuserbyId(userId);
 		ResponseStructure<Userdto> structure = new ResponseStructure<Userdto>();
 		Userdto userdto = mapper.map(user,Userdto.class);
 		structure.setData(userdto);
@@ -62,6 +63,51 @@ public class UserService {
 		return structure;
 	}
 
+	public ResponseStructure<Userdto> updateuser(Userdto user) 
+	{
+		
+		User user1 = mapper.map(user, User.class);
+		User saveduser = dao.updateuser(user1);
+		Userdto fuser = mapper.map(saveduser,Userdto.class);
+		ResponseStructure<Userdto> structure = new ResponseStructure<Userdto>();
+		structure.setData(fuser);
+		structure.setTimeStamp(LocalDateTime.now());
+		structure.setStatusCode(200);
+		structure.setMessage("Data Updated Successfully");
+		return structure;
+		
+		
+				
+		
+	}
+
+	public ResponseStructure<String> deleteuser(int userId) 
+	{
+		String message = dao.deleteuser(userId);
+	ResponseStructure<String> structure = new ResponseStructure<>();	
+	structure.setData(message);
+	structure.setStatusCode(200);
+	structure.setTimeStamp(LocalDateTime.now());
+	structure.setMessage("Data Deleted Successfully");
+		return structure;
+	}
+
+	public ResponseStructure<Userdto> registerUser(Userdto dto) {
+		User user = mapper.map(dto,User.class);
+		User saveduser = dao.registerUser(user);
+		Userdto fuser = mapper.map(saveduser, Userdto.class);
+		ResponseStructure<Userdto> structure = new ResponseStructure<>();
+		structure.setData(fuser);
+		structure.setStatusCode(200);
+		structure.setTimeStamp(LocalDateTime.now());
+		structure.setMessage("User Registered Successfully");
+		return structure;
+		
+		
+		
+	}
+
+	
 	
 	
 	
