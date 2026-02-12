@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entity.User;
 import com.example.service.UserService;
 import com.example.userdto.Userdto;
+import com.example.util.ResponseStructure;
 
 @RestController
 @RequestMapping("/user")
@@ -26,9 +27,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<Userdto> registerUser(@RequestBody Userdto dto) {
-        Userdto userdto2 = userService.registerUser(dto);
-        return new ResponseEntity<>(userdto2,HttpStatus.CREATED);
+    public ResponseEntity<?> registerUser(@RequestBody Userdto dto) {
+        ResponseStructure<Userdto> structure = userService.registerUser(dto);
+        return new ResponseEntity<>(structure,HttpStatus.CREATED);
     	//return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(dto));  
    
 
@@ -41,21 +42,35 @@ public class UserController {
 		
     }
     
-    @GetMapping("/getdetails/{userId}")
-    public ResponseEntity<Userdto> getuserbyId(@PathVariable int userId) {
-        Userdto user = userService.getuserbyId(userId);
-        return new  ResponseEntity<>(user,HttpStatus.OK);
-    }
-
-    @GetMapping("/by-email")
-
-    public ResponseEntity<Userdto> getuserbyemail(@RequestParam String email)
+//    @GetMapping("/getdetails/{userId}")
+//    public ResponseEntity<Userdto> getuserbyId(@PathVariable int userId) {
+//        Userdto user = userService.getuserbyId(userId);
+//        return new  ResponseEntity<>(user,HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/by-email")
+//
+//    public ResponseEntity<Userdto> getuserbyemail(@RequestParam String email)
+//    {
+//    	Userdto user1 =  userService.getuserbyemail(email);
+//    	return new ResponseEntity<>(user1,HttpStatus.OK);
+//    }
+@GetMapping("/update")
+    public ResponseEntity<?> updateuser(@RequestBody Userdto user )
     {
-    	Userdto user1 =  userService.getuserbyemail(email);
-    	return new ResponseEntity<>(user1,HttpStatus.OK);
+    	ResponseStructure<Userdto> structure = userService.updateuser(user);
+    	return new ResponseEntity<>(structure,HttpStatus.OK);
+    	
+    	
+    	
     }
 
-    
+@GetMapping("/delete/{userid}")
+public ResponseEntity<?> deleteuser(@PathVariable int userId)
+{
+ResponseStructure<String> Structure = userService.deleteuser(userId);
+  return new ResponseEntity<>(Structure,HttpStatus.OK);
+}
     
     
     
