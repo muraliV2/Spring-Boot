@@ -45,4 +45,3 @@ public void setContact(long contact) {
 
 
 }
-
