@@ -42,19 +42,19 @@ public class UserController {
 		
     }
     
-//    @GetMapping("/getdetails/{userId}")
-//    public ResponseEntity<Userdto> getuserbyId(@PathVariable int userId) {
-//        Userdto user = userService.getuserbyId(userId);
-//        return new  ResponseEntity<>(user,HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/by-email")
-//
-//    public ResponseEntity<Userdto> getuserbyemail(@RequestParam String email)
-//    {
-//    	Userdto user1 =  userService.getuserbyemail(email);
-//    	return new ResponseEntity<>(user1,HttpStatus.OK);
-//    }
+    @GetMapping("/getdetails/{userId}")
+    public ResponseEntity<?> getuserbyId(@PathVariable int userId) {
+    	ResponseStructure<Userdto> structure = userService.getuserbyId(userId);
+        return new  ResponseEntity<>(structure,HttpStatus.OK);
+    }
+
+    @GetMapping("/by-email")
+
+    public ResponseEntity<?> getuserbyemail(@RequestParam String email)
+    {
+    	ResponseStructure<Userdto> structure=  userService.getuserbyemail(email);
+    	return new ResponseEntity<>(structure,HttpStatus.OK);
+    }
 @GetMapping("/update")
     public ResponseEntity<?> updateuser(@RequestBody Userdto user )
     {
@@ -65,14 +65,19 @@ public class UserController {
     	
     }
 
-@GetMapping("/delete/{userid}")
+@GetMapping("/delete/{userId}")
 public ResponseEntity<?> deleteuser(@PathVariable int userId)
 {
 ResponseStructure<String> Structure = userService.deleteuser(userId);
   return new ResponseEntity<>(Structure,HttpStatus.OK);
 }
     
-    
+   public ResponseEntity<?> loginUser(@RequestBody Userdto dto)
+   {
+	   ResponseStructure<Userdto> structure = userService.loginUser(dto.getEmail(),dto.getPassword());
+	   return new ResponseEntity<>(structure,HttpStatus.OK);
+	   
+   }
     
 
 }
