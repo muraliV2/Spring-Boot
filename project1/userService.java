@@ -107,6 +107,27 @@ public class UserService {
 		
 	}
 
+	public ResponseStructure<Userdto> loginUser(String email, String password) 
+	{
+		User user = dao.loginUSer(email);
+		if(user.getPassword().equals(password))
+		{
+			Userdto dto = mapper.map(user,Userdto.class);
+			ResponseStructure<Userdto> structure = new ResponseStructure<Userdto>();
+			structure.setData(dto);
+			structure.setMessage("login Successfull");
+			structure.setStatusCode(200);
+			structure.setTimeStamp(LocalDateTime.now());
+			return structure;
+		}
+		else
+		{
+			throw new IllegalArgumentException("Password Incorrect");
+		}
+	}
+
+	
+
 	
 	
 	
