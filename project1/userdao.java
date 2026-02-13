@@ -1,45 +1,94 @@
-package com.example.userdto;
+package com.example.userdao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import java.util.List;
+import java.util.Optional;
 
-@Entity
-public class Userdto {
-@Id
-    private int userId;
-    private String userName;
-    private String email;
-    private String password;
-    private long contact;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-    public int getUserId() {
-        return userId;
+import com.example.entity.User;
+import com.example.repository.UserRepository;
+import com.example.userdto.Userdto;
+
+@Repository
+public class Userdao {
+
+    @Autowired
+    private UserRepository userrepository;
+
+    public User registerUser(User user) 
+    {  
+    	
+//    	Optional<User> opt = userrepository.findById(user.getUserId());
+//    	if(opt.isPresent())
+//    	{
+//    		throw new IllegalArgumentException("already value present in thsi Id");
+//    	}
+//    	else
+//    	{
+//    		return userrepository.save(user);
+//    		
+//    	}
+    	return userrepository.save(user);
+       
     }
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-    public String getUserName() {
-        return userName;
-    }
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public long getContact() {
-        return contact;
-    }
-    public void setContact(long contact) {
-        this.contact = contact;
-    }
+
+	public List<User> userdetails() 
+	{
+	return userrepository.findAll();
+	
+		
+	}
+	
+	public User getuserbyId(int userId) 
+	{
+		
+		return userrepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("No UserId Found"));
+	}
+
+	public User getuserbyemail(String email) {
+		return userrepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("Email doesnt Exist"));
+	}
+
+	public  User updateuser(User user1) 
+	{
+	Optional<User> opt = userrepository.findById(user1.getUserId());
+	if(opt.isPresent())
+	{
+		return userrepository.save(user1);
+		
+		
+	}
+	else
+	{
+		throw new IllegalArgumentException("There is a problem in this code");
+	}
+	
+	}
+
+	public String deleteuser(int userId) {
+		
+		Optional<User> opt = userrepository.findById(userId);
+		if(opt.isPresent())
+		{
+			 userrepository.deleteById(userId);
+			 return "User Deleted Successfully";
+			
+		}
+		else
+		{
+			
+			throw new IllegalArgumentException("there is  a error in thsi program");
+		}
+		
+		
+	}
+
+	public User loginUSer(String email) {
+	
+		
+		return userrepository.findByEmail(email)
+				.orElseThrow(() -> new IllegalArgumentException("Email Not Found"));
+		
+	}
 }
