@@ -1,4 +1,4 @@
-package com.example.controller;
+ package com.example.controller;
 
 import java.util.List;
 
@@ -84,3 +84,5 @@ ResponseStructure<String> Structure = userService.deleteuser(userId);
     
 
 }
+
+//neeed to add page details as new function 
