@@ -2,7 +2,6 @@ package com.example.userdto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 @Entity
 public class Userdto {
 @Id
