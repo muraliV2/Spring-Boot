@@ -55,7 +55,6 @@ public class UserController {
     	return new ResponseEntity<>(structure,HttpStatus.OK);
 	
     }
-
 @GetMapping("/delete/{userId}")
 public ResponseEntity<?> deleteuser(@PathVariable int userId)
 {
