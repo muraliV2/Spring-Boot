@@ -26,8 +26,7 @@ public class UserController {
     public ResponseEntity<?> registerUser(@RequestBody Userdto dto) {
         ResponseStructure<Userdto> structure = userService.registerUser(dto);
         return new ResponseEntity<>(structure,HttpStatus.CREATED);
-    	//return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(dto));  
-   
+
 
     }
     
