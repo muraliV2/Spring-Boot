@@ -16,7 +16,6 @@ import com.example.entity.User;
 import com.example.service.UserService;
 import com.example.userdto.Userdto;
 import com.example.util.ResponseStructure;
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
