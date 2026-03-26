@@ -1,4 +1,4 @@
- package com.example.controller;
+package com.example.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,9 +56,7 @@ public class UserController {
     {
     	ResponseStructure<Userdto> structure = userService.updateuser(user);
     	return new ResponseEntity<>(structure,HttpStatus.OK);
-    	
-    	
-    	
+	
     }
 
 @GetMapping("/delete/{userId}")
