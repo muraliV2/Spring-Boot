@@ -10,7 +10,6 @@ import com.example.userdto.Userdto;
 public class Userdao {
     @Autowired
     private UserRepository userrepository;
-
     public User registerUser(User user) 
     {  
     	
