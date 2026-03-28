@@ -26,7 +26,6 @@ public class Userdao {
     	return userrepository.save(user);
        
     }
-
 	public List<User> userdetails() 
 	{
 	return userrepository.findAll();
