@@ -24,8 +24,7 @@ public class UserController {
     public ResponseEntity<?> registerUser(@RequestBody Userdto dto) {
         ResponseStructure<Userdto> structure = userService.registerUser(dto);
         return new ResponseEntity<>(structure,HttpStatus.CREATED);
-    }
-    
+    }    
     @GetMapping("/getuser")
     public List<User>  userdetails()
     {
