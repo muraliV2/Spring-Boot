@@ -18,7 +18,6 @@ import com.example.util.ResponseStructure;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
     @Autowired
     private UserService userService;
 
