@@ -8,7 +8,6 @@ import com.example.repository.UserRepository;
 import com.example.userdto.Userdto;
 @Repository
 public class Userdao {
-
     @Autowired
     private UserRepository userrepository;
 
