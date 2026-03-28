@@ -20,7 +20,6 @@ import com.example.util.ResponseStructure;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody Userdto dto) {
         ResponseStructure<Userdto> structure = userService.registerUser(dto);
