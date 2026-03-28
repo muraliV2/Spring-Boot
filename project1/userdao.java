@@ -28,8 +28,6 @@ public class Userdao {
 	public List<User> userdetails() 
 	{
 	return userrepository.findAll();
-	
-		
 	}
 	
 	public User getuserbyId(int userId) 
