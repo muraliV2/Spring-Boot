@@ -30,8 +30,7 @@ public class UserController {
     {
     	return userService.userdetails();
 		
-    }
-    
+    }    
     @GetMapping("/getdetails/{userId}")
     public ResponseEntity<?> getuserbyId(@PathVariable int userId) {
     	ResponseStructure<Userdto> structure = userService.getuserbyId(userId);
