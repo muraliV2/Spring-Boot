@@ -37,7 +37,6 @@ public class UserController {
         return new  ResponseEntity<>(structure,HttpStatus.OK);
     }
     @GetMapping("/by-email")
-
     public ResponseEntity<?> getuserbyemail(@RequestParam String email)
     {
     	ResponseStructure<Userdto> structure=  userService.getuserbyemail(email);
