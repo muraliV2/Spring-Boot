@@ -15,9 +15,6 @@ import com.example.util.ResponseStructure;
 
 @Service
 public class UserService {
-	
-	
-	
 
 
     @Autowired
