@@ -55,7 +55,7 @@ public ResponseEntity<?> deleteuser(@PathVariable int userId)
 ResponseStructure<String> Structure = userService.deleteuser(userId);
   return new ResponseEntity<>(Structure,HttpStatus.OK);
 }
-    
+
    public ResponseEntity<?> loginUser(@RequestBody Userdto dto)
    {
 	   ResponseStructure<Userdto> structure = userService.loginUser(dto.getEmail(),dto.getPassword());
