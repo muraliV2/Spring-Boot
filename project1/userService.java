@@ -22,9 +22,6 @@ public class UserService {
     @Autowired
     private ModelMapper mapper;
 
-//    public Userdto registerUser(Userdto dto) {
-//
-
 
 	public List<User> userdetails() {
 	return 	dao.userdetails();
