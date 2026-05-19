@@ -58,8 +58,7 @@ ResponseStructure<String> Structure = userService.deleteuser(userId);
    {
 	   ResponseStructure<Userdto> structure = userService.loginUser(dto.getEmail(),dto.getPassword());
 	   return new ResponseEntity<>(structure,HttpStatus.OK);	   
-   }
-    
+   }    
 }
 
 
