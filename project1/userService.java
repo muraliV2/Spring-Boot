@@ -26,8 +26,7 @@ public class UserService {
 //
 //        User user = mapper.map(dto, User.class);
 //        User savedUser = dao.registerUser(user);
-//        return mapper.map(savedUser, Userdto.class);
-//    }
+
 
 	public List<User> userdetails() {
 	return 	dao.userdetails();
