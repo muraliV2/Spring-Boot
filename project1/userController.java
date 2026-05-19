@@ -60,7 +60,6 @@ ResponseStructure<String> Structure = userService.deleteuser(userId);
 	   return new ResponseEntity<>(structure,HttpStatus.OK);	   
    }
     
-
 }
 
-//neeed to add page details as new function 
+
