@@ -35,9 +35,7 @@ public class Userdao {
 	Optional<User> opt = userrepository.findById(user1.getUserId());
 	if(opt.isPresent())
 	{
-		return userrepository.save(user1);
-		
-		
+		return userrepository.save(user1);	
 	}
 	else
 	{
