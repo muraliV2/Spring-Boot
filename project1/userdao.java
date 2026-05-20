@@ -13,8 +13,7 @@ public class Userdao {
     public User registerUser(User user) 
     {  
 
-    	return userrepository.save(user);
-       
+    	return userrepository.save(user);     
     }
 	public List<User> userdetails() 
 	{
