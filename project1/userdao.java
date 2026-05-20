@@ -29,7 +29,6 @@ public class Userdao {
 	public User getuserbyemail(String email) {
 		return userrepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("Email doesnt Exist"));
 	}
-
 	public  User updateuser(User user1) 
 	{
 	Optional<User> opt = userrepository.findById(user1.getUserId());
