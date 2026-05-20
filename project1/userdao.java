@@ -12,16 +12,7 @@ public class Userdao {
     private UserRepository userrepository;
     public User registerUser(User user) 
     {  
-//    	Optional<User> opt = userrepository.findById(user.getUserId());
-//    	if(opt.isPresent())
-//    	{
-//    		throw new IllegalArgumentException("already value present in thsi Id");
-//    	}
-//    	else
-//    	{
-//    		return userrepository.save(user);
-//    		
-//    	}
+
     	return userrepository.save(user);
        
     }
