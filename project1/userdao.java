@@ -25,7 +25,6 @@ public class Userdao {
 		
 		return userrepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("No UserId Found"));
 	}
-
 	public User getuserbyemail(String email) {
 		return userrepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("Email doesnt Exist"));
 	}
