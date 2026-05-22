@@ -18,8 +18,6 @@ public class UserService {
     private Userdao dao;
     @Autowired
     private ModelMapper mapper;
-
-
 	public List<User> userdetails() {
 	return 	dao.userdetails();
 		
