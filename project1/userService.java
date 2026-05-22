@@ -16,7 +16,6 @@ import com.example.util.ResponseStructure;
 public class UserService {
     @Autowired
     private Userdao dao;
-
     @Autowired
     private ModelMapper mapper;
 
