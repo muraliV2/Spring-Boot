@@ -48,7 +48,7 @@ public class Userdao {
 		if(opt.isPresent())
 		{
 			 userrepository.deleteById(userId);
-			 return "User Deleted Successfully";
+			 return "User acoount  Deleted Successfully";
 			
 		}
 		else
