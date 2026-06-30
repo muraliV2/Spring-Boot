@@ -59,8 +59,7 @@ public class UserService {
 		structure.setMessage("Data Updated Successfully");
 		return structure;
 		
-		
-				
+					
 		
 	}
 
