@@ -45,7 +45,6 @@ public class UserService {
 		structure.setMessage("user found Successfully");
 		return structure;
 	}
-
 	public ResponseStructure<Userdto> updateuser(Userdto user) 
 	{
 		
