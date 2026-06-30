@@ -84,8 +84,7 @@ public class UserService {
 		structure.setTimeStamp(LocalDateTime.now());
 		structure.setMessage("User Registered Successfully");
 		return structure;
-		
-		
+			
 		
 	}
 
