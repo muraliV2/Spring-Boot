@@ -73,7 +73,6 @@ public class UserService {
 	structure.setMessage("Data Deleted Successfully");
 		return structure;
 	}
-
 	public ResponseStructure<Userdto> registerUser(Userdto dto) {
 		User user = mapper.map(dto,User.class);
 		User saveduser = dao.registerUser(user);
